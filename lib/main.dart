@@ -1,4 +1,5 @@
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +13,12 @@ void main() {
 }
 
 void _setupLogging() {
-  Logger.root.level = Level.ALL; // defaults to Level.INFO
-  Logger.root.onRecord.listen((record) {
-    print('${record.level.name}: ${record.time}: ${record.message}');
-  });
+  if (kDebugMode) {
+    Logger.root.level = Level.ALL; // defaults to Level.INFO
+    Logger.root.onRecord.listen((record) {
+      print('${record.level.name}: ${record.time}: ${record.message}');
+    });
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
               ),
               filterState: FilterState(),
               attribute: 'genre',
-              operator: FilterOperator.or,
+              operator: FilterOperator.and,
             ),
         dispose: (context, value) => value.dispose(),
         child: MaterialApp(

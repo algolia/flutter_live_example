@@ -31,6 +31,7 @@ class SearchService {
       filterState: filterState,
       attribute: attribute,
       operator: operator,
+      selectionMode: SelectionMode.multiple,
     );
   }
 

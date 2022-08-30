@@ -43,11 +43,11 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-#dependency_overrides:
-#  algolia_helper:
-#    path: LOCAL/PATH/HERE
-#  algolia_helper_flutter:
-#    path: LOCAL/PATH/HERE
+dependency_overrides:
+  algolia_helper:
+    path: /Users/mouaad.aallam/Developer/Algolia/flutter/algoliasearch_helper_dart/helper_dart
+  algolia_helper_flutter:
+    path: /Users/mouaad.aallam/Developer/Algolia/flutter/algoliasearch_helper_dart/helper_flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
