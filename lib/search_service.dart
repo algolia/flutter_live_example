@@ -26,7 +26,7 @@ class SearchService {
     searcher.connectFilterState(filterState);
 
     // 3.2. instantiate the refinement list.
-    facetList = FacetList.create(
+    facetList = FacetList(
       searcher: searcher,
       filterState: filterState,
       attribute: attribute,

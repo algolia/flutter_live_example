@@ -46,9 +46,9 @@ dev_dependencies:
 # (Won't be needed after the first release of the package)
 dependency_overrides:
   algolia_helper:
-    path: /PATH/TO/ALGOLIA/HELPERS/helper_dart
+    path: /Users/mouaad.aallam/Developer/Algolia/flutter/algoliasearch_helper_dart/helper_dart
   algolia_helper_flutter:
-    path: /PATH/TO/ALGOLIA/HELPERS/helper_flutter
+    path: /Users/mouaad.aallam/Developer/Algolia/flutter/algoliasearch_helper_dart/helper_flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

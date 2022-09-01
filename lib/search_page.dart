@@ -74,12 +74,8 @@ class _SearchPageState extends State<SearchPage> {
                       final hit = hits[index];
                       return ListTile(
                         title: RichText(
-                          text: TextSpan(
-                            style: Theme.of(context).textTheme.headline6,
-                            children: hit
-                                .getHightlightedString('title')
-                                .toTextSpans(),
-                          ),
+                          text: hit.getHighlightedString('title').toTextSpan(
+                              style: Theme.of(context).textTheme.headline6),
                         ),
                         subtitle: Text((hit['genre'] as List).join(', ')),
                       );
