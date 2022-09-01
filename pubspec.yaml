@@ -27,8 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  algolia_helper: 0.0.1  # Use the exact version until the API is stable.
-  algolia_helper_flutter: 0.0.1  # Use the exact version until the API is stable.
+  algolia_helper_flutter: ^0.1.0
   flutter:
     sdk: flutter
   logging: ^1.0.2
@@ -42,13 +41,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
-# (Won't be needed after the first release of the package)
-dependency_overrides:
-  algolia_helper:
-    path: /Users/mouaad.aallam/Developer/Algolia/flutter/algoliasearch_helper_dart/helper_dart
-  algolia_helper_flutter:
-    path: /Users/mouaad.aallam/Developer/Algolia/flutter/algoliasearch_helper_dart/helper_flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

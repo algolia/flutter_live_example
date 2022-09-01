@@ -48,7 +48,7 @@ class SearchService {
 
   /// Select a facet value.
   void selectFacet(String selection) {
-    facetList.select(selection);
+    facetList.toggle(selection);
   }
 
   /// Dispose of underlying resources.
