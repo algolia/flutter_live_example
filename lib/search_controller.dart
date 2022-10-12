@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
+import 'package:rxdart/rxdart.dart';
 
 class SearchController {
   final FilterState filterState = FilterState();
@@ -28,7 +29,7 @@ class SearchController {
   void query(String query) => searcher.query(query);
 
   /// Search responses
-  Stream<SearchResponse> get responses => searcher.responses;
+  late final Stream<SearchResponse> responses = searcher.responses.shareValue();
 
   /// Facets list.
   Stream<List<SelectableFacet>> get facets => facetList.facets;
