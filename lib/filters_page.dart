@@ -16,13 +16,7 @@ class _FiltersPageState extends State<FiltersPage> {
   Widget build(BuildContext context) {
     final searchService = context.read<SearchService>();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Genre'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: AppBar(title: const Text('Genre')),
       body: StreamBuilder<List<SelectableFacet>>(
         stream: searchService.facets,
         builder: (context, snapshot) {
