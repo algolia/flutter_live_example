@@ -1,11 +1,10 @@
-import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
+import 'search_controller.dart';
 import 'search_page.dart';
-import 'search_service.dart';
 
 void main() {
   _setupLogging();
@@ -26,20 +25,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider<SearchService>(
-        create: (context) => SearchService(
-              searcher: HitsSearcher(
-                applicationID: 'latency',
-                apiKey: '1a23398ec6339348c9a753b22aaed3cb',
-                indexName: 'movies',
-              ),
-              filterState: FilterState(),
-              attribute: 'genre',
-              operator: FilterOperator.or,
-            ),
-        dispose: (context, value) => value.dispose(),
+    return Provider<SearchController>(
+        create: (_) => SearchController(),
+        dispose: (_, controller) => controller.dispose(),
         child: MaterialApp(
-          title: 'Algolia',
+          title: 'Algolia & Flutter',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),

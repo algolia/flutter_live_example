@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'search_service.dart';
+import 'search_controller.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final searchService = context.read<SearchService>();
+    final controller = context.read<SearchController>();
     return Container(
       width: double.infinity,
       height: 40,
@@ -18,8 +18,7 @@ class SearchBox extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
-          onChanged: searchService.query,
-          // 3. Run your searchService operations
+          onChanged: controller.query,
           decoration: const InputDecoration(
             prefixIcon: Icon(Icons.search),
             hintText: 'Search...',

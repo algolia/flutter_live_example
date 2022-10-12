@@ -2,23 +2,27 @@ import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'search_service.dart';
+import 'search_controller.dart';
 
-class FiltersPage extends StatefulWidget {
-  const FiltersPage({Key? key}) : super(key: key);
+class SearchFiltersPage extends StatelessWidget {
+  const SearchFiltersPage({Key? key}) : super(key: key);
 
-  @override
-  State<FiltersPage> createState() => _FiltersPageState();
-}
-
-class _FiltersPageState extends State<FiltersPage> {
   @override
   Widget build(BuildContext context) {
-    final searchService = context.read<SearchService>();
+    final controller = context.read<SearchController>();
     return Scaffold(
-      appBar: AppBar(title: const Text('Genre')),
+      appBar: AppBar(
+        title: Text(
+          'Genre',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: false,
+        iconTheme: Theme.of(context).iconTheme,
+      ),
       body: StreamBuilder<List<SelectableFacet>>(
-        stream: searchService.facets,
+        stream: controller.facets,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final facets = snapshot.data ?? [];
@@ -31,7 +35,7 @@ class _FiltersPageState extends State<FiltersPage> {
                   title: Text('${facet.value} (${facet.count})'),
                   trailing:
                       selectable.isSelected ? const Icon(Icons.check) : null,
-                  onTap: () => searchService.selectFacet(facet.value),
+                  onTap: () => controller.selectFacet(facet.value),
                 );
               },
             );

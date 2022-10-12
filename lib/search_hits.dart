@@ -2,17 +2,17 @@ import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'search_service.dart';
+import 'search_controller.dart';
 
 class SearchHits extends StatelessWidget {
   const SearchHits({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final searchService = context.read<SearchService>();
+    final controller = context.read<SearchController>();
     return StreamBuilder<SearchResponse>(
-      stream: searchService.responses,
-      // 4. Listen and display searchService results!
+      stream: controller.responses,
+      // 4. Listen and display controller results!
       builder: (BuildContext context, AsyncSnapshot<SearchResponse> snapshot) {
         if (snapshot.hasData) {
           final response = snapshot.data ?? SearchResponse({});
