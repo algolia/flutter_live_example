@@ -19,10 +19,13 @@ class SearchController {
     selectionMode: SelectionMode.multiple,
   );
 
+  late final _components = CompositeDisposable()
+    ..add(filterState)
+    ..add(searcher)
+    ..add(facetList);
+
   /// Set search query.
-  void query(String query) {
-    searcher.query(query);
-  }
+  void query(String query) => searcher.query(query);
 
   /// Search responses
   Stream<SearchResponse> get responses => searcher.responses;
@@ -31,14 +34,8 @@ class SearchController {
   Stream<List<SelectableFacet>> get facets => facetList.facets;
 
   /// Select a facet value.
-  void selectFacet(String selection) {
-    facetList.toggle(selection);
-  }
+  void selectFacet(String selection) => facetList.toggle(selection);
 
   /// Dispose of underlying resources.
-  void dispose() {
-    searcher.dispose();
-    filterState.dispose();
-    facetList.dispose();
-  }
+  void dispose() => _components.dispose();
 }
