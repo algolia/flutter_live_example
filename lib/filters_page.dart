@@ -20,7 +20,7 @@ class _FiltersPageState extends State<FiltersPage> {
         title: const Text('Genre'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: StreamBuilder<List<SelectableFacet>>(

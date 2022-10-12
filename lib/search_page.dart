@@ -37,16 +37,9 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_list),
-            onPressed: () =>
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const FiltersPage()),
-                ),
-          )
-        ],
+      ),
+      drawer: const Drawer(
+        child: FiltersPage()
       ),
       body: StreamBuilder<SearchResponse>(
         stream: searchService.responses,
@@ -61,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                      const EdgeInsets.only(left: 18, top: 8),
                   child: Text(
                     response.stats(),
                     style: Theme.of(context).textTheme.caption,
