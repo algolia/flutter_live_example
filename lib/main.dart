@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               ),
               filterState: FilterState(),
               attribute: 'genre',
-              operator: FilterOperator.and,
+              operator: FilterOperator.or,
             ),
         dispose: (context, value) => value.dispose(),
         child: MaterialApp(
