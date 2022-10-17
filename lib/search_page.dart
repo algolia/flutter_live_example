@@ -14,9 +14,11 @@ class SearchPage extends StatelessWidget {
       Styling.isLargeScreen(context) ? desktopView() : handsetView();
 
   Widget desktopView() {
-    return Center(
+    return Align(
+      alignment: Alignment.topCenter,
       child: SizedBox(
         width: 1280,
+        height: 720,
         child: Scaffold(
           appBar: AppBar(
             toolbarHeight: 80,
@@ -27,7 +29,7 @@ class SearchPage extends StatelessWidget {
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
