@@ -12,18 +12,23 @@ class SearchController {
     indexName: 'demo_ecommerce',
   )..connectFilterState(filterState);
 
-  late final FacetList facetList = FacetList(
+  late final FacetList categoryFacetList = FacetList(
     searcher: searcher,
     filterState: filterState,
     attribute: 'categories',
-    operator: FilterOperator.or,
-    selectionMode: SelectionMode.multiple,
+  );
+
+  late final FacetList brandFacetList = FacetList(
+    searcher: searcher,
+    filterState: filterState,
+    attribute: 'brand',
   );
 
   late final _components = CompositeDisposable()
     ..add(filterState)
     ..add(searcher)
-    ..add(facetList);
+    ..add(categoryFacetList)
+    ..add(brandFacetList);
 
   /// Set search query.
   void query(String query) => searcher.query(query);
@@ -32,10 +37,16 @@ class SearchController {
   late final Stream<SearchResponse> responses = searcher.responses.shareValue();
 
   /// Facets list.
-  Stream<List<SelectableFacet>> get facets => facetList.facets;
+  Stream<List<SelectableFacet>> get categories => categoryFacetList.facets;
+
+  /// Facets list.
+  Stream<List<SelectableFacet>> get brands => brandFacetList.facets;
 
   /// Select a facet value.
-  void selectFacet(String selection) => facetList.toggle(selection);
+  void selectCategory(String selection) => categoryFacetList.toggle(selection);
+
+  /// Select a facet value.
+  void selectBrand(String selection) => brandFacetList.toggle(selection);
 
   /// Dispose of underlying resources.
   void dispose() => _components.dispose();

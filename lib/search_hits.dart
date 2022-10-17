@@ -46,7 +46,7 @@ class SearchHitRow extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
             child: SizedBox(
                 width: 76, height: 76, child: Image.network(hit['image'])),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'search_box.dart';
-import 'search_filters_page.dart';
+import 'search_filters.dart';
 import 'search_hits.dart';
 import 'search_stats.dart';
 import 'styling.dart';
@@ -30,9 +30,17 @@ class SearchPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                SizedBox(width: 268, height: 512, child: Card(child: SearchFiltersPage())),
-                Flexible(child: SearchHits())
+              children: [
+                SizedBox(
+                  width: 268,
+                  child: Column(
+                    children: const [
+                      Expanded(flex: 1, child: Card(child: CategoriesFacets())),
+                      Expanded(flex: 1, child: Card(child: BrandsFacets())),
+                    ],
+                  ),
+                ),
+                const Flexible(child: SearchHits())
               ],
             ),
           ),
@@ -44,7 +52,13 @@ class SearchPage extends StatelessWidget {
   Widget handsetView() {
     return Scaffold(
       appBar: AppBar(title: SearchBox()),
-      drawer: const Drawer(child: SearchFiltersPage()),
+      drawer: Drawer(
+          child: Column(
+        children: const [
+          Expanded(flex: 1, child: Card(child: CategoriesFacets())),
+          Expanded(flex: 1, child: Card(child: BrandsFacets())),
+        ],
+      )),
       body: const SearchHits(),
     );
   }
