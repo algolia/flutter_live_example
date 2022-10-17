@@ -7,15 +7,15 @@ class SearchController {
   final FilterState filterState = FilterState();
 
   late final HitsSearcher searcher = HitsSearcher(
-    applicationID: 'latency',
-    apiKey: '1a23398ec6339348c9a753b22aaed3cb',
-    indexName: 'movies',
+    applicationID: 'B1G2GM9NG0',
+    apiKey: 'aadef574be1f9252bb48d4ea09b5cfe5',
+    indexName: 'demo_ecommerce',
   )..connectFilterState(filterState);
 
   late final FacetList facetList = FacetList(
     searcher: searcher,
     filterState: filterState,
-    attribute: 'genre',
+    attribute: 'categories',
     operator: FilterOperator.or,
     selectionMode: SelectionMode.multiple,
   );

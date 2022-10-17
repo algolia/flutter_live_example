@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'search_box.dart';
 import 'search_filters_page.dart';
 import 'search_hits.dart';
+import 'search_stats.dart';
 import 'styling.dart';
 
 class SearchPage extends StatelessWidget {
@@ -12,21 +13,37 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) =>
       Styling.isLargeScreen(context) ? desktopView() : handsetView();
 
-  Scaffold desktopView() {
-    return Scaffold(
-      appBar: AppBar(title: const SearchBox()),
-      body: Row(
-        children: const [
-          SizedBox(width: 250, child: SearchFiltersPage()),
-          Flexible(child: SearchHits())
-        ],
+  Widget desktopView() {
+    return Center(
+      child: SizedBox(
+        width: 1280,
+        child: Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 80,
+            elevation: 0.0,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [Card(child: SearchBox()), SearchStats()],
+            ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                SizedBox(width: 268, height: 512, child: Card(child: SearchFiltersPage())),
+                Flexible(child: SearchHits())
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
 
-  Scaffold handsetView() {
+  Widget handsetView() {
     return Scaffold(
-      appBar: AppBar(title: const SearchBox()),
+      appBar: AppBar(title: SearchBox()),
       drawer: const Drawer(child: SearchFiltersPage()),
       body: const SearchHits(),
     );

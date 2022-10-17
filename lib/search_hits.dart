@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'search_controller.dart';
+import 'styling.dart';
 
-class SearchHits extends StatelessWidget {
+class SearchHits extends StatefulWidget {
   const SearchHits({Key? key}) : super(key: key);
 
+  @override
+  State<SearchHits> createState() => _SearchHitsState();
+}
+
+class _SearchHitsState extends State<SearchHits> {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<SearchController>();
@@ -17,38 +23,58 @@ class SearchHits extends StatelessWidget {
         if (snapshot.hasData) {
           final response = snapshot.data ?? SearchResponse({});
           final hits = response.hits.toList();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 18, top: 8),
-                child: Text(
-                  response.stats(),
-                  style: Theme.of(context).textTheme.caption,
-                ),
-              ),
-              const Divider(),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: hits.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final hit = hits[index];
-                    return ListTile(
-                      title: RichText(
-                        text: hit.getHighlightedString('title').toTextSpan(
-                            style: Theme.of(context).textTheme.headline6),
-                      ),
-                      subtitle: Text((hit['genre'] as List).join(', ')),
-                    );
-                  },
-                ),
-              ),
-            ],
+          return ListView.builder(
+            itemCount: hits.length,
+            itemBuilder: (context, index) => SearchHitRow(hit: hits[index]),
           );
         } else {
           return const LinearProgressIndicator();
         }
       },
+    );
+  }
+}
+
+class SearchHitRow extends StatelessWidget {
+  const SearchHitRow({super.key, required this.hit});
+
+  final Hit hit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: SizedBox(
+                width: 76, height: 76, child: Image.network(hit['image'])),
+          ),
+          Expanded(
+            child: ListTile(
+              title: RichText(
+                text: hit
+                    .getHighlightedString('name')
+                    .toTextSpan(style: Theme.of(context).textTheme.bodyText1),
+              ),
+              subtitle: RichText(
+                text: hit
+                    .getHighlightedString('description')
+                    .toTextSpan(style: Theme.of(context).textTheme.caption),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+              isThreeLine: true,
+              trailing: Text(
+                "\$${hit['price']}",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

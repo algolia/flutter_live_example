@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'search_controller.dart';
 import 'search_page.dart';
+import 'styling.dart';
 
 void main() {
   _setupLogging();
@@ -30,9 +31,7 @@ class MyApp extends StatelessWidget {
         dispose: (_, controller) => controller.dispose(),
         child: MaterialApp(
           title: 'Algolia & Flutter',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
+          theme: AppTheme.light(),
           home: const SearchPage(),
         ));
   }
