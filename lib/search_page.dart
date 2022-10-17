@@ -51,7 +51,7 @@ class SearchPage extends StatelessWidget {
 
   Widget handsetView() {
     return Scaffold(
-      appBar: AppBar(title: SearchBox()),
+      appBar: AppBar(title: const SearchBox()),
       drawer: Drawer(
           child: Column(
         children: const [
