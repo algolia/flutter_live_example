@@ -7,7 +7,7 @@ import 'search_stats.dart';
 import 'styling.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) =>

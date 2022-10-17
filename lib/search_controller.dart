@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
+import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SearchController {
@@ -29,6 +30,9 @@ class SearchController {
     ..add(searcher)
     ..add(categoryFacetList)
     ..add(brandFacetList);
+
+  late final TextEditingController textController = TextEditingController()
+    ..addListener(() => query(textController.text));
 
   /// Set search query.
   void query(String query) => searcher.query(query);

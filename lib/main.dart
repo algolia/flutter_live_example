@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Algolia & Flutter',
           theme: AppTheme.light(),
-          home: const SearchPage(),
+          home: SearchPage(),
         ));
   }
 }
