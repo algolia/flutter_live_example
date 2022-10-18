@@ -1,19 +1,42 @@
 import 'package:flutter/material.dart';
 
-import 'search_box.dart';
-import 'search_filters.dart';
-import 'search_hits.dart';
-import 'search_stats.dart';
-import 'styling.dart';
+import 'ui/search_box.dart';
+import 'ui/search_filters.dart';
+import 'ui/search_hits.dart';
+import 'ui/search_stats.dart';
 
 class SearchPage extends StatelessWidget {
-  SearchPage({super.key});
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) =>
-      Styling.isLargeScreen(context) ? desktopView() : handsetView();
+      Screen.isLarge(context) ? const DesktopSearch() : const HandsetSearch();
+}
 
-  Widget desktopView() {
+class HandsetSearch extends StatelessWidget {
+  const HandsetSearch({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const SearchBox()),
+      drawer: Drawer(
+          child: Column(
+        children: const [
+          Expanded(flex: 1, child: Card(child: CategoriesFacets())),
+          Expanded(flex: 1, child: Card(child: BrandsFacets())),
+        ],
+      )),
+      body: const SearchHits(),
+    );
+  }
+}
+
+class DesktopSearch extends StatelessWidget {
+  const DesktopSearch({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
       child: SizedBox(
@@ -50,18 +73,17 @@ class SearchPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget handsetView() {
-    return Scaffold(
-      appBar: AppBar(title: const SearchBox()),
-      drawer: Drawer(
-          child: Column(
-        children: const [
-          Expanded(flex: 1, child: Card(child: CategoriesFacets())),
-          Expanded(flex: 1, child: Card(child: BrandsFacets())),
-        ],
-      )),
-      body: const SearchHits(),
-    );
-  }
+class Screen {
+  static const breakpointSM = 640;
+  static const breakpointLD = 768;
+  static const breakpointLG = 1024;
+  static const breakpointXL = 1280;
+
+  static bool isLarge(BuildContext context) =>
+      MediaQuery.of(context).size.width > breakpointLG;
+
+  static bool isMedium(BuildContext context) =>
+      MediaQuery.of(context).size.width > breakpointSM;
 }

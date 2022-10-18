@@ -1,6 +1,6 @@
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/styling.dart';
+import 'package:flutter_playground/ui/styling.dart';
 import 'package:provider/provider.dart';
 
 import 'search_controller.dart';
