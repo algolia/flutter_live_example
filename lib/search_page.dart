@@ -20,9 +20,9 @@ class HandsetSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const SearchBox()),
-      drawer: Drawer(
+      drawer: const Drawer(
           child: Column(
-        children: const [
+        children: [
           Expanded(flex: 1, child: Card(child: CategoriesFacets())),
           Expanded(flex: 1, child: Card(child: BrandsFacets())),
         ],
@@ -46,26 +46,26 @@ class DesktopSearch extends StatelessWidget {
           appBar: AppBar(
             toolbarHeight: 80,
             elevation: 0.0,
-            title: Column(
+            title: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [Card(child: SearchBox()), SearchStats()],
+              children: [Card(child: SearchBox()), SearchStats()],
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
+          body: const Padding(
+            padding: EdgeInsets.only(left: 14, right: 14, bottom: 14),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 268,
                   child: Column(
-                    children: const [
+                    children: [
                       Expanded(flex: 1, child: Card(child: CategoriesFacets())),
                       Expanded(flex: 1, child: Card(child: BrandsFacets())),
                     ],
                   ),
                 ),
-                const Flexible(child: SearchHits())
+                Flexible(child: SearchHits())
               ],
             ),
           ),

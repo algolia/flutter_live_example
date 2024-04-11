@@ -13,14 +13,12 @@ class HitsController {
     indexName: 'demo_ecommerce',
   )..connectFilterState(filterState);
 
-  late final FacetList categoryFacetList = FacetList(
-    searcher: searcher,
+  late final FacetList categoryFacetList = searcher.buildFacetList(
     filterState: filterState,
     attribute: 'categories',
   );
 
-  late final FacetList brandFacetList = FacetList(
-    searcher: searcher,
+  late final FacetList brandFacetList = searcher.buildFacetList(
     filterState: filterState,
     attribute: 'brand',
   );
