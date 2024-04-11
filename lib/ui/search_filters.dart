@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'search_controller.dart';
 
 class CategoriesFacets extends StatelessWidget {
-  const CategoriesFacets({Key? key}) : super(key: key);
+  const CategoriesFacets({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CategoriesFacets extends StatelessWidget {
 }
 
 class BrandsFacets extends StatelessWidget {
-  const BrandsFacets({Key? key}) : super(key: key);
+  const BrandsFacets({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,11 @@ class BrandsFacets extends StatelessWidget {
 
 class SearchFilters extends StatelessWidget {
   const SearchFilters({
-    Key? key,
+    super.key,
     required this.title,
     required this.facets,
     required this.onClick,
-  }) : super(key: key);
+  });
 
   final String title;
   final Stream<List<SelectableFacet>> facets;
@@ -54,7 +54,7 @@ class SearchFilters extends StatelessWidget {
           title,
           style: Theme.of(context)
               .textTheme
-              .subtitle1
+              .titleMedium
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.transparent,
@@ -92,12 +92,12 @@ class SearchFacetRow extends StatelessWidget {
     return ListTile(
       title: Row(
         children: [
-          Text(facet.item.value, style: Theme.of(context).textTheme.bodyText1),
+          Text(facet.item.value, style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(width: 6),
           Text(facet.item.count.toString(),
               style: Theme.of(context)
                   .textTheme
-                  .bodyText2
+                  .bodyMedium
                   ?.copyWith(color: AppColors.proton)),
         ],
       ),

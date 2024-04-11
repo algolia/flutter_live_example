@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'search_controller.dart';
 
 class SearchLoading extends StatelessWidget {
-  const SearchLoading({Key? key}) : super(key: key);
+  const SearchLoading({super.key});
 
   @override
   Widget build(BuildContext context) {

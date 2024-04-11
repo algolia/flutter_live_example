@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'search_controller.dart';
 
 class SearchStats extends StatelessWidget {
-  const SearchStats({Key? key}) : super(key: key);
+  const SearchStats({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SearchStats extends StatelessWidget {
             snapshot.data?.stats() ?? '',
             style: Theme.of(context)
                 .textTheme
-                .overline
+                .labelSmall
                 ?.copyWith(color: AppColors.proton),
           );
         });

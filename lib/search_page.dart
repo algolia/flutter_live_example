@@ -14,7 +14,7 @@ class SearchPage extends StatelessWidget {
 }
 
 class HandsetSearch extends StatelessWidget {
-  const HandsetSearch({Key? key}) : super(key: key);
+  const HandsetSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class HandsetSearch extends StatelessWidget {
 }
 
 class DesktopSearch extends StatelessWidget {
-  const DesktopSearch({Key? key}) : super(key: key);
+  const DesktopSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
