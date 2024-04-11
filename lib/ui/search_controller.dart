@@ -4,7 +4,7 @@ import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
-class SearchController {
+class HitsController {
   final FilterState filterState = FilterState();
 
   late final HitsSearcher searcher = HitsSearcher(

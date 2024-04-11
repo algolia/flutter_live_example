@@ -15,7 +15,7 @@ class SearchHits extends StatefulWidget {
 class _SearchHitsState extends State<SearchHits> {
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<SearchController>();
+    final controller = context.read<HitsController>();
     return StreamBuilder<SearchResponse>(
       stream: controller.responses,
       // 4. Listen and display controller results!

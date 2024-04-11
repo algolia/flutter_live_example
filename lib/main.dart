@@ -21,8 +21,8 @@ class SearchApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider<SearchController>(
-        create: (_) => SearchController(),
+    return Provider<HitsController>(
+        create: (_) => HitsController(),
         dispose: (_, controller) => controller.dispose(),
         child: MaterialApp(
           title: 'Algolia x Flutter',

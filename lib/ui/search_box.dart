@@ -14,7 +14,7 @@ class SearchBox extends StatefulWidget {
 class _SearchBoxState extends State<SearchBox> {
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<SearchController>();
+    final controller = context.read<HitsController>();
     return Container(
       width: double.infinity,
       height: 40,

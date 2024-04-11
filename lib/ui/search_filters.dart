@@ -10,7 +10,7 @@ class CategoriesFacets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<SearchController>();
+    final controller = context.read<HitsController>();
     return SearchFilters(
       title: 'Categories',
       facets: controller.categories,
@@ -24,7 +24,7 @@ class BrandsFacets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<SearchController>();
+    final controller = context.read<HitsController>();
     return SearchFilters(
       title: 'Brands',
       facets: controller.brands,
