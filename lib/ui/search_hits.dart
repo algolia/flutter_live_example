@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'search_controller.dart';
-import 'styling.dart';
 
 class SearchHits extends StatefulWidget {
-  const SearchHits({Key? key}) : super(key: key);
+  const SearchHits({super.key});
 
   @override
   State<SearchHits> createState() => _SearchHitsState();
@@ -15,7 +14,7 @@ class SearchHits extends StatefulWidget {
 class _SearchHitsState extends State<SearchHits> {
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<SearchController>();
+    final controller = context.read<HitsController>();
     return StreamBuilder<SearchResponse>(
       stream: controller.responses,
       // 4. Listen and display controller results!
@@ -55,12 +54,12 @@ class SearchHitRow extends StatelessWidget {
               title: RichText(
                 text: hit
                     .getHighlightedString('name')
-                    .toTextSpan(style: Theme.of(context).textTheme.bodyText1),
+                    .toTextSpan(style: Theme.of(context).textTheme.bodyLarge),
               ),
               subtitle: RichText(
                 text: hit
                     .getHighlightedString('description')
-                    .toTextSpan(style: Theme.of(context).textTheme.caption),
+                    .toTextSpan(style: Theme.of(context).textTheme.bodySmall),
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -69,7 +68,7 @@ class SearchHitRow extends StatelessWidget {
                 "\$${hit['price']}",
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2,
+                    .bodyMedium,
               ),
             ),
           ),

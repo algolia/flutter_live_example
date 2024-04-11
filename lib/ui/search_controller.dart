@@ -4,7 +4,7 @@ import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
-class SearchController {
+class HitsController {
   final FilterState filterState = FilterState();
 
   late final HitsSearcher searcher = HitsSearcher(
@@ -13,14 +13,12 @@ class SearchController {
     indexName: 'demo_ecommerce',
   )..connectFilterState(filterState);
 
-  late final FacetList categoryFacetList = FacetList(
-    searcher: searcher,
+  late final FacetList categoryFacetList = searcher.buildFacetList(
     filterState: filterState,
     attribute: 'categories',
   );
 
-  late final FacetList brandFacetList = FacetList(
-    searcher: searcher,
+  late final FacetList brandFacetList = searcher.buildFacetList(
     filterState: filterState,
     attribute: 'brand',
   );

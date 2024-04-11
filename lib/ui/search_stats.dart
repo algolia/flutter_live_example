@@ -6,11 +6,11 @@ import 'package:provider/provider.dart';
 import 'search_controller.dart';
 
 class SearchStats extends StatelessWidget {
-  const SearchStats({Key? key}) : super(key: key);
+  const SearchStats({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<SearchController>();
+    final controller = context.read<HitsController>();
     return StreamBuilder<SearchResponse>(
         stream: controller.responses,
         builder: (context, snapshot) {
@@ -18,7 +18,7 @@ class SearchStats extends StatelessWidget {
             snapshot.data?.stats() ?? '',
             style: Theme.of(context)
                 .textTheme
-                .overline
+                .labelSmall
                 ?.copyWith(color: AppColors.proton),
           );
         });
